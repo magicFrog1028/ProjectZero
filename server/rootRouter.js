@@ -5,8 +5,9 @@ let testRoot = async (server) =>{
 }
 
 
-let rootRouter = async (server) =>{
+const rootRouter = async (server) =>{
     server.register(testRoot);
+    server.register(require('./routers/userRouter.js').userRouter, { prefix: '/user' });
 }
 
 module.exports = { rootRouter };
