@@ -1,4 +1,3 @@
-
 module.exports = class userService{
 
     constructor(){};
@@ -10,4 +9,8 @@ module.exports = class userService{
     getPassword(){
         return "Admin";
     }
+
+    authenticate(username,password){
+        if(username == "Admin" && password == "Admin"){return true}else{return false}
+    } 
 }

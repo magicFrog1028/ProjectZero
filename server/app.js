@@ -1,8 +1,9 @@
 require("dotenv").config();
+const cors = require('@fastify/cors');
 const rootRouter = require('./rootRouter.js').rootRouter;
 const server = require('fastify')({ logger: true });
 server.register(rootRouter);
-
+server.register(cors, { });
 
 const startServer = async () => {
 

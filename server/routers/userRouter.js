@@ -15,6 +15,14 @@ const userRouter = async (server) =>{
             return userServices.getPassword();
         }
     );
+
+    server.post(
+        '/authenticate', async function handler (request, reply) {
+            
+                console.log("----authenticate-----",request.body);
+            return userServices.authenticate(request.body.username, request.body.password);
+        }
+    );
     
     
 }
