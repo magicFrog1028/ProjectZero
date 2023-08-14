@@ -5,6 +5,7 @@
     class="login-form"
     @finish="onFinish"
     @finishFailed="onFinishFailed"
+    :style="{ width: '300px', margin: 'auto' }"
   >
     <a-form-item
       label="Username"
@@ -56,6 +57,8 @@
 <script setup>
 import { authenticate } from '@/api/login.js'
 import { reactive, computed } from 'vue'
+import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
+
 const formState = reactive({
   username: '',
   password: '',
@@ -77,7 +80,6 @@ const disabled = computed(() => {
 #components-form-demo-normal-login .login-form {
   max-width: 300px;
 }
-
 #components-form-demo-normal-login .login-form-forgot {
   float: right;
 }
