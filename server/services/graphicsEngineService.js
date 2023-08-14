@@ -10,7 +10,7 @@ module.exports = class graphicsEngineService{
 
     preProcess = (argumentStr) => {
     //Add argument string preprocess code here
-    return arugumentStr;
+    return argumentStr;
     };
  
 }

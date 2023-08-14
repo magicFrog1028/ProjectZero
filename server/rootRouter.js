@@ -8,7 +8,7 @@ let testRoot = async (server) =>{
 const rootRouter = async (server) =>{
     server.register(testRoot);
     server.register(require('./routers/userRouter.js').userRouter, { prefix: '/user' });
-    server.register(require('./routers/graphicsEngineRouter.js').userRouter, { prefix: '/graphics' });
+    server.register(require('./routers/graphicsRouter.js').graphicsRouter, { prefix: '/graphics' });
 }
 
 module.exports = { rootRouter };

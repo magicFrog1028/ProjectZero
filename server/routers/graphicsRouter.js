@@ -1,14 +1,14 @@
 const graphicsEngineService = require("../services/graphicsEngineService.js");
 let graphicsEngineServices = new graphicsEngineService();
-const graphicsEngine = async (server) =>{
+const graphicsRouter = async (server) =>{
 
 
     server.post(
         '/generateGraphics', async function handler (request, reply) {
-            return userServices.genrateGraphics(request.body.argumentStr);
+            return graphicsEngineServices.generateGraphics(request.body.argumentStr);
         }
     );
     
 }
 
-module.exports = { graphicsEngineRouter };
+module.exports = { graphicsRouter };
