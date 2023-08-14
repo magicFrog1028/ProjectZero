@@ -1,5 +1,10 @@
 {
-  "recommendations": ["Vue.volar", "esbenp.prettier-vscode","dbaeumer.vscode-eslint",
-  "christian-kohler.path-intellisense","formulahendry.auto-close-tag","formulahendry.auto-rename-tag","hollowtree.vue-snippets"
-]
+  "recommendations": [
+    "Vue.volar",
+    "dbaeumer.vscode-eslint",
+    "sdras.vue-vscode-snippets",
+    "christian-kohler.path-intellisense",
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag"
+  ]
 }
