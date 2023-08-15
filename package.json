@@ -1,15 +1,16 @@
 {
     "dependencies": {
         "concurrently": "^8.2.0",
+        "nodemon": "^3.0.1",
         "vue": "^3.2.26"
     },
     "scripts": {
         "server": "cd server && node app.js",
         "ui": "cd ui && vite",
-        "start": "concurrently \"cd server && node app.js\"  \"cd ui && vite\""
+        "start": "concurrently \"cd server && npm run server\"  \"cd ui && vite\""
     },
-      "devDependencies": {
+    "devDependencies": {
         "@vitejs/plugin-vue": "^2.0.1",
         "vite": "^2.7.7"
-      }
+    }
 }
