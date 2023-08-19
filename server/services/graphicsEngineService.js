@@ -1,16 +1,21 @@
+const SDapi = require("../api_callout/SDapi");
 module.exports = class graphicsEngineService{
 
     constructor(){};
 
-    generateGraphics = async (argumentStr) => {
+    generateGraphicsByText = async (argumentStr) => {
         console.log("====string input:",argumentStr);
-        this.preProcess(argumentStr);
-        return "a";
+        let preRes = this.preProcess(argumentStr);
+        return await SDapi.text2Image(preRes);
     };
 
     preProcess = (argumentStr) => {
     //Add argument string preprocess code here
-    return argumentStr;
+    let args = {
+        prompt:argumentStr,
+        steps:1
+    };
+    return args;
     };
     
  
