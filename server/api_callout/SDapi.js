@@ -11,8 +11,8 @@
             data: args
         });
         
-        if(res.data && res.data != undefined){
-            return res.data
+        if(res.data && res.data != undefined && res.data.images && res.data.images != undefined){
+            return res.data.images
         }
     }
 

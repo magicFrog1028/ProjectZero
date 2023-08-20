@@ -1,4 +1,5 @@
 const SDapi = require("../api_callout/SDapi");
+const decodeImg = require("../utils/decodeImg").decodeImg;
 module.exports = class graphicsEngineService{
 
     constructor(){};
@@ -6,7 +7,9 @@ module.exports = class graphicsEngineService{
     generateGraphicsByText = async (argumentStr) => {
         console.log("====string input:",argumentStr);
         let preRes = this.preProcess(argumentStr);
-        return await SDapi.text2Image(preRes);
+        let images =  await SDapi.text2Image(preRes);
+        let postRes = this.postProcess(images);
+        return images;
     };
 
     preProcess = (argumentStr) => {
@@ -16,6 +19,16 @@ module.exports = class graphicsEngineService{
         steps:1
     };
     return args;
+    };
+
+
+    postProcess = (images) => {
+        //Add document preprocess code here(basically save image to FS system/DB and save record in DB)
+        
+        for(let i = 0; i <= images.length;i++){
+            decodeImg(images[i], "../server/files/test.png");
+        }
+        
     };
     
  
