@@ -1,46 +1,32 @@
 <template>
-    <a-form :model="formState" name="basic" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }" autocomplete="off"
-        @finish="onFinish" @finishFailed="onFinishFailed">
-        <a-form-item label="Username" name="username" :rules="[{ required: true, message: 'Please input your username!' }]">
-            <a-input v-model:value="formState.username" />
-        </a-form-item>
-
-        <a-form-item label="Password" name="password" :rules="[{ required: true, message: 'Please input your password!' }]">
-            <a-input-password v-model:value="formState.password" />
-        </a-form-item>
-
-        <a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">
-            <a-checkbox v-model:checked="formState.remember">Remember me</a-checkbox>
-        </a-form-item>
-
-        <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
-            <a-button type="primary" html-type="submit">Submit</a-button>
-        </a-form-item>
-    </a-form>
+    <button @click="generateImg({
+    'argumentStr':'123'
+})">click</button>
+    <img :src="`data:image/png;base64,${defaultImg}`" />
 </template>
 <script>
-import { authenticate } from '@/api/login.js'
-import { defineComponent, reactive } from 'vue';
-export default defineComponent({
-    setup() {
-        const formState = reactive({
-            username: '',
-            password: '',
-            remember: true,
-        });
-        const onFinish = async values => {
-            console.log('Success:', values);
-            const res = await authenticate(values.username, values.password)
-            console.log('res:', res)
-        };
-        const onFinishFailed = errorInfo => {
-            console.log('Failed:', errorInfo);
-        };
-        return {
-            formState,
-            onFinish,
-            onFinishFailed,
-        };
+
+import decodeImg from '@/utils/decodeImg';
+import { txt2Img } from '@/api/graphics.js'
+export default 
+
+
+{
+    data () {
+				return {
+                    defaultImg:""
+				  }
+		 },
+
+         methods:{
+            async generateImg(args){
+        console.log("hi");
+        let img = await  txt2Img(args);
+        console.log(img.data[0]);
+        this.defaultImg = img.data[0];
+        decodeImg(img);
     },
-});
+         }
+}
+
 </script>

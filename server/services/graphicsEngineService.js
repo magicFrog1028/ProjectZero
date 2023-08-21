@@ -8,7 +8,7 @@ module.exports = class graphicsEngineService{
         console.log("====string input:",argumentStr);
         let preRes = this.preProcess(argumentStr);
         let images =  await SDapi.text2Image(preRes);
-        let postRes = this.postProcess(images);
+        //let postRes = this.postProcess(images);
         return images;
     };
 
