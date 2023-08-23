@@ -1,26 +1,29 @@
 const userService = require("../services/userService.js");
-let userServices = new userService();
+const userServices = new userService();
+const jwt = require("jsonwebtoken");
 const userRouter = async (server) =>{
 
 
     server.post(
-        '/getUsername', async function handler (request, reply) {
-            return userServices.getUsername();
-        }
-    );
-
-
-    server.post(
-        '/getPassword', async function handler (request, reply) {
-            return userServices.getPassword();
-        }
-    );
-
-    server.post(
-        '/authenticate', async function handler (request, reply) {
+        '/login', async function handler (request, reply) {
             
                 console.log("----authenticate-----",request.body);
             return userServices.authenticate(request.body.username, request.body.password);
+        }
+    );
+
+    server.post(
+        '/checkJWT', async function handler (request, reply) {
+            
+            console.log("----jwt----",request.headers);
+            let token = request.headers['authorization'].split(" ")[1];
+            console.log(token);
+            return jwt.verify(token, 'key', (err, data) => {
+                if (err) return err
+            
+                return data
+            
+              })
         }
     );
     
