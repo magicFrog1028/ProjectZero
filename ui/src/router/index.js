@@ -13,13 +13,13 @@ const routes = [
         name: 'dashboard',
         component: () => import('@/views/app/DashboardView.vue'),
         meta: { requiresAuth: true }
-      },
-      {
-        path: 'canvas',
-        name: 'canvas',
-        component: () => import('@/views/app/CanvasView.vue'),
-        meta: { requiresAuth: true }
       }
+      // {
+      //   path: 'canvas',
+      //   name: 'canvas',
+      //   component: () => import('@/views/app/CanvasView.vue'),
+      //   meta: { requiresAuth: true }
+      // }
     ]
   },
   {
@@ -34,7 +34,7 @@ const routes = [
       {
         path: 'register',
         name: 'register',
-        component: () => import('@/views/auth / RegisterView.vue')
+        component: () => import('@/views/auth/RegisterView.vue')
       }
     ]
   }
