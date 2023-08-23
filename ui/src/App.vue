@@ -1,7 +1,5 @@
 <template>
-  <Demo />
+  <router-view></router-view>
 </template>
 
-<script setup>
-import Demo from "@/views/DemoView.vue";
-</script>
+<script setup></script>
