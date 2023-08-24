@@ -11,7 +11,13 @@ module.exports = class userService {
     let brands = [];
     for(let i=0;i<BRANDS.length;i++){
       if( selectedUser.user_uid == BRANDS[i].brand_userid ){
-        brands.push(BRANDS[i]);
+        let brand = BRANDS[i];
+        let tempData = {
+          brandName: brand.brand_name,
+          brandLogo:brand.brand_logo,
+          brandMetadata:brand.brand_metadata
+        };
+        brands.push(tempData);
       }
     }
     return brands;
