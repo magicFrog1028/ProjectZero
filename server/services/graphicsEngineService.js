@@ -16,7 +16,7 @@ module.exports = class graphicsEngineService{
     //Add argument string preprocess code here
     let args = {
         prompt:argumentStr,
-        steps:1
+        steps:30
     };
     return args;
     };

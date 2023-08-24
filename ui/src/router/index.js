@@ -3,6 +3,7 @@ import { useUserStore } from '@/stores/user.js'
 
 const routes = [
   { path: '/' },
+  { path: '/demo', component: () => import('@/views/DemoView.vue') },
   {
     path: '/app',
     component: () => import('@/layouts/AppLayout.vue'),
@@ -12,6 +13,30 @@ const routes = [
         path: 'dashboard',
         name: 'dashboard',
         component: () => import('@/views/app/DashboardView.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'proCatalog',
+        name: 'proCatalog',
+        component: () => import('@/views/app/products/ProCatalogView.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'orderList',
+        name: 'orderList',
+        component: () => import('@/views/app/orders/OrderListView.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'tempList',
+        name: 'tempList',
+        component: () => import('@/views/app/templates/TemplateListView.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'canvas',
+        name: 'canvas',
+        component: () => import('@/views/app/library/CanvasView.vue'),
         meta: { requiresAuth: true }
       }
       // {

@@ -1,9 +1,13 @@
 import axios from 'axios'
-const baseURL = 'http://localhost:5000/'
+import { useUserStore } from '../stores/user'
+const userStore = useUserStore()
+const baseURL = 'http://127.0.0.1:5000/'
 const instance = axios.create({
   baseURL,
   timeout: 10000,
-  headers: {}
+  headers: {
+    headers: { authorization: 'Bearer ' + userStore.token }
+  }
 })
 // 添加请求拦截器
 instance.interceptors.request.use(
