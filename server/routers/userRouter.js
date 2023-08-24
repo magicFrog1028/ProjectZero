@@ -1,6 +1,7 @@
 const userService = require("../services/userService.js");
 const userServices = new userService();
 const jwt = require("jsonwebtoken");
+const res = require("../utils/response").res;
 const userRouter = async (server) =>{
 
 
@@ -8,7 +9,12 @@ const userRouter = async (server) =>{
         '/login', async function handler (request, reply) {
             
                 console.log("----authorization-----",request.body);
-            return userServices.authorization(request.body.username, request.body.password);
+            let data = await userServices.authorization(request.body.username, request.body.password);
+            if(data.res == 1){
+                res(200, {token:data.token, user:data.user}, data.msg, reply);
+            }else{
+                res(403, {}, data.msg, reply);
+            }
         }
     );
 

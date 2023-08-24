@@ -2,8 +2,7 @@ const USERS = require("../mockupData/user").USER;
 const jwt = require("jsonwebtoken");
 module.exports = class userService {
   constructor() {}
-  async getUser(username) {
-    console.log(USERS);
+  async getUserByUsername(username) {
     for (let i = 0; i < USERS.length; i++) {
       if (USERS[i].user_username == username) {
         return USERS[i];
@@ -12,12 +11,22 @@ module.exports = class userService {
     return null;
   }
 
+  async getUserByUid(uid) {
+    for (let i = 0; i < USERS.length; i++) {
+      if (USERS[i].user_uid == uid) {
+        return USERS[i];
+      }
+    }
+    return null;
+  }
+
+
   async authorization(username, password) {
-    let userDetail = await this.getUser(username);
-    console.log("authenticate---",userDetail);
+    let userDetail = await this.getUserByUsername(username);
+    console.log("----authorized-----",userDetail);
 
     if (userDetail && userDetail != null && userDetail != undefined) {
-      let success = true ? userDetail["user_password"] == password : false;
+      let success = userDetail["user_password"] == password ? true : false;
       if (success) {
         const token = jwt.sign(
           { username: userDetail["user_username"], password: userDetail["user_password"] },
