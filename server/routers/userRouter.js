@@ -7,8 +7,8 @@ const userRouter = async (server) =>{
     server.post(
         '/login', async function handler (request, reply) {
             
-                console.log("----authenticate-----",request.body);
-            return userServices.authenticate(request.body.username, request.body.password);
+                console.log("----authorization-----",request.body);
+            return userServices.authorization(request.body.username, request.body.password);
         }
     );
 
