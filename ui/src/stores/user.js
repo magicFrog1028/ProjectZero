@@ -21,7 +21,7 @@ export const useUserStore = defineStore('user', {
       {
         key: 'brandful-my-user',
         storage: localStorage,
-        paths: ['token']
+        paths: ['token', 'user']
       }
     ]
   }

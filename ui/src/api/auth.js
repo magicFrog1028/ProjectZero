@@ -1,4 +1,5 @@
 import request from '@/utils/request'
+
 const login = (data) => {
   console.log('input', data)
   return request.post('/user/login', data)
@@ -9,9 +10,10 @@ const register = (obj) => {
     ...obj
   })
 }
-const getBrands = () => {
-  return request.get('/brands', {
-    userId: '1'
+
+const getBrands = (username) => {
+  return request.post('/brand/', {
+    username
   })
 }
 export { login, register, getBrands }

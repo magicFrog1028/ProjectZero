@@ -6,7 +6,7 @@ const instance = axios.create({
   baseURL,
   timeout: 10000,
   headers: {
-    headers: { authorization: 'Bearer ' + userStore.token }
+    authorization: 'Bearer ' + userStore.token
   }
 })
 // 添加请求拦截器

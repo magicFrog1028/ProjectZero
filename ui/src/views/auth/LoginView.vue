@@ -162,6 +162,7 @@ async function handleLogin() {
   })
   console.log(res)
   userStore.setToken(res.token)
+  userStore.user = res.user
   console.log('route', route.query)
   router.push(route.query?.redirect || '/app')
 }

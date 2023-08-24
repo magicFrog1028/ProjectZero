@@ -6,15 +6,15 @@
       <div class="flex flex-row items-center">
         <img
           class="flex-none h-9 w-9 rounded-full"
-          :src="props.curChoice.logo"
+          :src="props.curChoice.brandLogo"
           alt=""
         />
         <div :class="[props.sidebarTail ? 'hidden' : '', 'grow shrink-0']">
           <p class="text-lg font-medium text-gray-700 font-semibold">
-            {{ props.curChoice.name }}
+            {{ props.curChoice.brandName }}
           </p>
           <p class="text-xs font-medium text-gray-500">
-            {{ props.curChoice.addInfo }}
+            {{ props.curChoice.brandMetadata }}
           </p>
         </div>
         <ChevronDownIcon
@@ -44,7 +44,7 @@
         <MenuItem
           v-slot="{ active }"
           v-for="item in props.otherChoices"
-          :key="item.name"
+          :key="item.brandName"
         >
           <button
             @click="handleChangeBrand(item.id)"
@@ -56,15 +56,15 @@
             <div class="flex flex-row items-center w-full">
               <img
                 class="h-9 w-10 rounded-full flex-none"
-                :src="item.logo"
-                :alt="item.name"
+                :src="item.brandLogo"
+                :alt="item.brandName"
               />
               <div class="grow shrink-0 pl-5">
                 <p class="text-lg font-medium text-gray-700">
-                  {{ item.name }}
+                  {{ item.brandName }}
                 </p>
                 <p class="text-xs font-medium text-gray-500">
-                  {{ item.addInfo }}
+                  {{ item.brandMetadata }}
                 </p>
               </div>
             </div>

@@ -97,14 +97,14 @@
                 <span class="sr-only">Open user menu</span>
                 <img
                   class="h-8 w-8 rounded-full bg-gray-50"
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  :src="userStore.user.avatar"
                   alt=""
                 />
                 <span class="flex items-center">
                   <span
                     class="ml-4 text-sm font-semibold leading-6 text-gray-900"
                     aria-hidden="true"
-                    >Tom Cook</span
+                    >{{ userStore.user.name }}</span
                   >
                   <ChevronDownIcon
                     class="ml-2 h-5 w-5 text-gray-400"
@@ -249,12 +249,15 @@ const userNavigation = [
 ////brand
 import { getBrands } from '@/api/auth.js'
 import { useBrandStore } from '@/stores/brand'
+import { useUserStore } from '../stores/user'
+const userStore = useUserStore()
 const brandStore = useBrandStore()
 const brandOperations = [
   { name: '添加新的品牌', href: '#', icon: HomeIcon },
   { name: '管理新的品牌', href: '#', icon: HomeIcon }
 ]
-getBrands().then((res) => {
+
+getBrands(userStore.user.username).then((res) => {
   brandStore.brandList = res
   brandStore.curBrand = res[0]
 })

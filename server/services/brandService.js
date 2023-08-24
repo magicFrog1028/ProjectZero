@@ -13,6 +13,7 @@ module.exports = class userService {
       if( selectedUser.user_uid == BRANDS[i].brand_userid ){
         let brand = BRANDS[i];
         let tempData = {
+          id: brand.brand_uid,
           brandName: brand.brand_name,
           brandLogo:brand.brand_logo,
           brandMetadata:brand.brand_metadata

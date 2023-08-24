@@ -1,5 +1,5 @@
 <template>
-  <div class="h-96">{{ brandStore.curBrand.name }}的起始页</div>
+  <div class="h-96">{{ brandStore.curBrand.brandName }}的起始页</div>
 </template>
 
 <script setup>

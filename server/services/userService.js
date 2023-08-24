@@ -24,7 +24,13 @@ module.exports = class userService {
           "key",
           { expiresIn: process.env.ACTIVATION_PERIOD }
         );
-        return { res: 1, msg: "登录成功", token: token };
+        const user = {
+          name: userDetail.user_name,
+          username: userDetail.user_username,
+          uid: userDetail.user_uid,
+          avatar: userDetail.user_avatar
+        }
+        return { res: 1, msg: "登录成功", token: token, user};
       } else {
         return { res: 0, msg: "密码不正确", token: null };
       }
