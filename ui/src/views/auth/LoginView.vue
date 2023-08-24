@@ -156,15 +156,14 @@ const userStore = useUserStore()
 let router = useRouter()
 let route = useRoute()
 async function handleLogin() {
-  const { accessToken, user } = await login({
-    email: email.value,
+  const res = await login({
+    username: email.value,
     password: password.value
   })
-  console.log(accessToken, user)
-  userStore.setToken(accessToken)
-  userStore.setUser(user)
+  console.log(res)
+  userStore.setToken(res.token)
   console.log('route', route.query)
-  router.push(route.query.redirect)
+  router.push(route.query?.redirect || '/app')
 }
 </script>
 

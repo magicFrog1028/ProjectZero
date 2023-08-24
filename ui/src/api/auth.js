@@ -1,6 +1,7 @@
 import request from '@/utils/request'
 const login = (data) => {
-  return request.post('/login', data)
+  console.log('input', data)
+  return request.post('/user/login', data)
 }
 const register = (obj) => {
   console.log(obj)
