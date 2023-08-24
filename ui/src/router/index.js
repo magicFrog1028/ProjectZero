@@ -39,6 +39,12 @@ const routes = [
         component: () => import('@/views/app/library/CanvasView.vue'),
         meta: { requiresAuth: true }
       }
+      // {
+      //   path: 'canvas',
+      //   name: 'canvas',
+      //   component: () => import('@/views/app/CanvasView.vue'),
+      //   meta: { requiresAuth: true }
+      // }
     ]
   },
   {
