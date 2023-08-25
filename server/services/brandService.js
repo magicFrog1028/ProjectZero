@@ -11,7 +11,7 @@ module.exports = class userService {
     if(selectedUser == null){ return []}
     let brands = [];
     for(let i=0;i<BRANDS.length;i++){
-      if( selectedUser.user_uid == BRANDS[i].brand_userid ){
+      if( selectedUser.user_uid == BRANDS[i].brand_userid && BRANDS[i].brand_status == "Active" ){
         let brand = BRANDS[i];
         let tempData = {
           id: brand.brand_uid,

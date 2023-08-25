@@ -4,7 +4,7 @@ module.exports = class userService {
   constructor() {}
   async getUserByUsername(username) {
     for (let i = 0; i < USERS.length; i++) {
-      if (USERS[i].user_username == username) {
+      if (USERS[i].user_username == username && USERS[i].user_status == "Active") {
         return USERS[i];
       }
     }
@@ -13,7 +13,7 @@ module.exports = class userService {
 
   async getUserByUid(uid) {
     for (let i = 0; i < USERS.length; i++) {
-      if (USERS[i].user_uid == uid) {
+      if (USERS[i].user_uid == uid && USERS[i].user_status == "Active") {
         return USERS[i];
       }
     }

@@ -5,6 +5,7 @@ const BRAND =  [
           "brand_name": "Kris的大公司",
           "brand_logo":"https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
           "brand_metadata": "testa",
+          "brand_status":"Active"
         },
         {
             "brand_uid":"c429e621-79da-4486-af91-520f7946bb49",
@@ -12,6 +13,7 @@ const BRAND =  [
             "brand_name": "BrandA",
             "brand_logo":"https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
             "brand_metadata": "testa",
+            "brand_status":"Active"
         }
 ];
 module.exports = {
