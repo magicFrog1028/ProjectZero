@@ -19,7 +19,7 @@ const userRouter = async (server) =>{
     );
 
     server.post(
-        '/checkJWT', async function handler (request, reply) {
+        '/checkJWT', {preValidation:[server.authorization]},async function handler (request, reply) {
             
             console.log("----jwt----",request.headers);
             let token = request.headers['authorization'].split(" ")[1];

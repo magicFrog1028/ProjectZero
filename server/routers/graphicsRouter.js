@@ -4,7 +4,7 @@ const graphicsRouter = async (server) =>{
 
 
     server.post(
-        '/generateGraphics', async function handler (request, reply) {
+        '/generateGraphics', {preValidation:[server.authorization]},async function handler (request, reply) {
             return await graphicsEngineServices.generateGraphicsByText(request.body.argumentStr);
         }
     );
