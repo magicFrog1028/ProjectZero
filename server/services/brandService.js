@@ -1,4 +1,7 @@
-const BRANDS = require("../mockupData/brand").BRAND;
+const DBManager = require("../database/databaseManager.js");
+const databaseManager = new DBManager();
+
+
 const userService = require("../services/userService.js");
 const userServices = new userService();
 const jwt = require("jsonwebtoken");
@@ -7,6 +10,8 @@ module.exports = class userService {
   constructor() {}
 
   async getBrands(uid){
+    
+    const BRANDS = await databaseManager.getTable('brands');
     let selectedUser = await userServices.getUserByUid(uid);
     if(selectedUser == null){ return []}
     let brands = [];
