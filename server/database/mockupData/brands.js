@@ -1,4 +1,4 @@
-const BRAND =  [
+const BRANDS =  [
         {
           "brand_uid":"4d2e4cce-0229-4d5c-90cc-8b8af3ae4591",
           "brand_userid":"b64ec016-e85b-49be-a697-40e627e75086",
@@ -17,5 +17,5 @@ const BRAND =  [
         }
 ];
 module.exports = {
-    BRAND
+    BRANDS
 }
