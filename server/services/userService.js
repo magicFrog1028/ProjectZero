@@ -1,7 +1,7 @@
 const DBManager = require("../database/databaseManager.js");
 const databaseManager = new DBManager();
 const jwt = require("jsonwebtoken");
-
+const { uuid } = require('uuidv4');
 
 module.exports = class userService {
   constructor() {}
@@ -82,6 +82,30 @@ module.exports = class userService {
   }
 
   async register(userInfo) {
-    
+    const user = {
+      user_name:userInfo.name,
+      user_username:userInfo.name,
+      user_avatar:"https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      user_password:userInfo.password,
+      user_uid: uuid(),
+      user_status:"Active"
+    };
+    let res = await databaseManager.insertOne('users',user);
+    if(res && res != null && res != undefined){
+      const token = jwt.sign(
+        { username: res["user_username"], password: res["user_password"] },
+        "key",
+        { expiresIn: process.env.ACTIVATION_PERIOD }
+      );
+      const user = {
+        name: res.user_name,
+        username: res.user_username,
+        uid: res.user_uid,
+        avatar:res.avatar
+      }
+      return { res: 1, msg: "注册成功", token: token, user};
+    }else{
+      return { res: 0, msg: "注册失败", token: null };
+    }
   }
 };

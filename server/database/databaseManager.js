@@ -19,7 +19,7 @@ module.exports = class databaseManager {
     }
   }
 
-  async updateTable(tableName, data) {
+  async insertOne(tableName, data) {
     //This will be updated once DB is setup, local setup for now
     let table = tableName.toUpperCase();
 
@@ -28,7 +28,7 @@ module.exports = class databaseManager {
     const strData = JSON.stringify(dataInTable);
     console.log(`TABLE[tableName]======updated 1 row====:`,data);
     fs.writeFile(
-      `./mockupData/${table}.js`,
+      `./database/mockupData/${tableName}.js`,
       `const ${table} = ` +
         strData +
         `;\n module.exports = {
@@ -45,5 +45,38 @@ module.exports = class databaseManager {
         }
       }
     );
+    return data;
+  }
+
+  async insertMany(tableName, data) {
+    //This will be updated once DB is setup, local setup for now
+    let table = tableName.toUpperCase();
+
+    let dataInTable = DB[table];
+    for (let i =0; i<data.length;i++){
+      dataInTable.push(data[i]);
+    }
+    
+    const strData = JSON.stringify(dataInTable);
+    console.log(`TABLE[tableName]======updated 1 row====:`,data);
+    fs.writeFile(
+      `./mockupData/${tableName}.js`,
+      `const ${table} = ` +
+        strData +
+        `;\n module.exports = {
+        ${table}
+    }`,
+      (error) => {
+        // throwing the error
+        // in case of a writing problem
+        if (error) {
+          // logging the error
+          console.error(error);
+
+          throw error;
+        }
+      }
+    );
+    return data;
   }
 };

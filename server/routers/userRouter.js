@@ -19,6 +19,23 @@ const userRouter = async (server) =>{
     );
 
     server.post(
+        '/register', async function handler (request, reply) {
+            
+                console.log("----registration-----",request.body);
+            let data = await userServices.register(request.body);
+            if(data.res == 1){
+                res(200, {token:data.token, user:data.user}, data.msg, reply);
+            }else{
+                res(403, {}, data.msg, reply);
+            }
+        }
+    );
+
+
+
+
+
+    server.post(
         '/checkJWT', {preValidation:[server.authorization]},async function handler (request, reply) {
             
             console.log("----jwt----",request.headers);
