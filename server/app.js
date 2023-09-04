@@ -15,6 +15,7 @@ server.decorate("authorization", async (request, reply) => {
         if (err) {
           return 0;
         } else {
+          console.log("======用户信息=====",data)
           return 1;
         }
       });

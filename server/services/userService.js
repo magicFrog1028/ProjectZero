@@ -35,34 +35,7 @@ module.exports = class userService {
       let success = userDetail["user_password"] == password ? true : false;
       if (success) {
         const token = jwt.sign(
-          { userid:  userDetail["user_uid "], username: userDetail["user_username"], password: userDetail["user_password"] },
-          "key",
-          { expiresIn: process.env.ACTIVATION_PERIOD }
-        );
-        const user = {
-          name: userDetail.user_name,
-          username: userDetail.user_username,
-          uid: userDetail.user_uid,
-          avatar: userDetail.user_avatar
-        }
-        return { res: 1, msg: "登录成功", token: token, user};
-      } else {
-        return { res: 0, msg: "密码不正确", token: null };
-      }
-    } else {
-      return { res: 0, msg: "用户不存在", token: null };
-    }
-  }
-
-  async authorization(username, password) {
-    let userDetail = await this.getUserByUsername(username);
-    console.log("----authorized-----",userDetail);
-
-    if (userDetail && userDetail != null && userDetail != undefined) {
-      let success = userDetail["user_password"] == password ? true : false;
-      if (success) {
-        const token = jwt.sign(
-          { username: userDetail["user_username"], password: userDetail["user_password"] },
+          { userid:  userDetail["user_uid"], username: userDetail["user_username"], password: userDetail["user_password"] },
           "key",
           { expiresIn: process.env.ACTIVATION_PERIOD }
         );
@@ -93,7 +66,7 @@ module.exports = class userService {
     let res = await databaseManager.insertOne('users',user);
     if(res && res != null && res != undefined){
       const token = jwt.sign(
-        { username: res["user_username"], password: res["user_password"] },
+        { userid:  res["user_uid "], username: res["user_username"], password: res["user_password"] },
         "key",
         { expiresIn: process.env.ACTIVATION_PERIOD }
       );

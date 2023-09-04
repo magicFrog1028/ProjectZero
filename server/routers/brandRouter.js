@@ -1,6 +1,10 @@
 const brandService = require("../services/brandService.js");
 const brandServices = new brandService();
 const res = require("../utils/response").res;
+const extractToken = require("../utils/extractToken").extractToken;
+
+
+
 const brandRouter = async (server) =>{
 
 
@@ -16,7 +20,7 @@ const brandRouter = async (server) =>{
     server.post(
         '/create', {preValidation:[server.authorization]},async function handler (request, reply) {
             console.log("----create one brand-----",request.body);
-            let brand =  await brandServices.createBrand(request.body, request.headers["authorization"]);
+            let brand =  await brandServices.createBrand(request.body, extractToken(request));
             res(200,brand.data,brand.msg,reply);       
         }
     );
