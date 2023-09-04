@@ -35,7 +35,7 @@ module.exports = class userService {
       let success = userDetail["user_password"] == password ? true : false;
       if (success) {
         const token = jwt.sign(
-          { username: userDetail["user_username"], password: userDetail["user_password"] },
+          { userid:  userDetail["user_uid "], username: userDetail["user_username"], password: userDetail["user_password"] },
           "key",
           { expiresIn: process.env.ACTIVATION_PERIOD }
         );
